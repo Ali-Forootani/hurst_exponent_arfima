@@ -35,15 +35,11 @@ where ( H \in (0,1) ) is the **Hurst exponent**.
 
 ARFIMA models extend ARIMA by allowing fractional integration:
 
-[
-(1 - L)^d X_t = \varepsilon_t
-]
+$(1 - L)^d X_t = \varepsilon_t$
 
 where:
 
-[
-d = H - 0.5
-]
+$d = H - 0.5$
 
 This project benchmarks:
 
@@ -61,21 +57,15 @@ under controlled and real-data settings.
 
 Fractional differencing:
 
-[
-(1 - L)^d = \sum_{k=0}^{\infty} w_k L^k
-]
+$(1 - L)^d = \sum_{k=0}^{\infty} w_k L^k$
 
 Weights computed recursively:
 
-[
-w_k = w_{k-1} \frac{k-1-d}{k}
-]
+$w_k = w_{k-1} \frac{k-1-d}{k}$
 
 Fractional integration:
 
-[
-(1 - L)^{-d}
-]
+$(1 - L)^{-d}$
 
 Used to invert forecasts step-by-step.
 
@@ -99,17 +89,13 @@ Two variants are implemented:
 
 Detrended Fluctuation Analysis (DFA(1)):
 
-[
-F(s) \sim s^H
-]
+$F(s) \sim s^H$
 
 Slope of log-log regression provides ( H ).
 
 Memory parameter:
 
-[
-d = \text{clip}(H - 0.5, -0.49, 0.49)
-]
+$d = \text{clip}(H - 0.5, -0.49, 0.49)$
 
 ---
 
@@ -117,15 +103,11 @@ d = \text{clip}(H - 0.5, -0.49, 0.49)
 
 Power-law kernel:
 
-[
-w_k \propto k^{-\eta}
-]
+$w_k \propto k^{-\eta}$
 
 with
 
-[
-\eta = \frac{3 - 2H}{2}
-]
+$\eta = \frac{3 - 2H}{2}$
 
 Provides a non-parametric long-memory benchmark.
 
@@ -205,21 +187,15 @@ Optional transformations:
 
 ### Absolute Log-Volatility
 
-[
-| \Delta \log X_t |
-]
+$| \Delta \log X_t |$
 
 ### Log-Returns
 
-[
-\Delta \log X_t
-]
+$\Delta \log X_t$
 
 ### Per-Channel Standardization
 
-[
-\frac{X - \mu}{\sigma}
-]
+$\frac{X - \mu}{\sigma}$
 
 ---
 
@@ -233,9 +209,7 @@ For each horizon ( h ):
 
 MASE defined as:
 
-[
-\text{MASE} = \frac{\text{MAE}}{\text{MAE of naive one-step}}
-]
+$\text{MASE} = \frac{\text{MAE}}{\text{MAE of naive one-step}}$
 
 Models are ranked by RMSE per horizon.
 
