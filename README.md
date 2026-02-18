@@ -29,9 +29,7 @@ The objective is to assess whether fractional long-memory structure provides mea
 
 Many financial, geophysical, and climatological time series exhibit **long-range dependence**, often characterized by:
 
-\[
-\text{Cov}(X_t, X_{t+k}) \sim k^{2H-2}
-\]
+$\text{Cov}(X_t, X_{t+k}) \sim k^{2H-2}$
 
 where ( H \in (0,1) ) is the **Hurst exponent**.
 
