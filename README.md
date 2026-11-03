@@ -107,7 +107,7 @@ $w_k \propto k^{-\eta}$
 
 with
 
-$\eta = \frac{3 - 2H}{2}$
+$\eta = H + \frac{1}{2}$
 
 Provides a non-parametric long-memory benchmark.
 
