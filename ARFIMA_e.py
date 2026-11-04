@@ -322,11 +322,20 @@ def fc_ets_level(x: np.ndarray, h: int) -> np.ndarray:
     return np.asarray(fit.forecast(h), float)
 
 def fc_powerlaw_kernel(x: np.ndarray, h: int, H: float, M: int = 400) -> np.ndarray:
+    
     """
-    Power-law kernel baseline:
-      w_k ∝ k^{-eta}, eta = (3-2H)/2 = (1+alpha)/2
+    Power-law kernel baseline consistent with Proposition 4.
+
+    The theoretical asymptotic decay is:
+
+        w_k ∝ k^(-(1+d))
+
+    where d = H - 0.5. Therefore:
+
+        eta = H + 0.5
     """
-    eta = (3.0 - 2.0 * float(H)) / 2.0
+    eta = float(H) + 0.5
+  
     M_eff = min(M, len(x))
     k = np.arange(1, M_eff + 1)
     w = k ** (-eta)
