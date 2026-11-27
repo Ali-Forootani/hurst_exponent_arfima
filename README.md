@@ -96,19 +96,6 @@ $$
 For each candidate parameter vector $\boldsymbol\vartheta=(\mu,d,\phi,\theta)$, conditional innovations are computed by causal filtering. Presample states are initialized to zero. Discarding the initial warm-up innovations, the concentrated conditional Gaussian objective is
 
 $$
-J(\boldsymbol\vartheta)
-=n_e\log\left(
-\max\left\{
-\frac{1}{n_e}\sum_{t\in\mathcal I}\varepsilon_t(\boldsymbol\vartheta)^2,
-10^{-12}
-\right\}
-\right),
-$$
-
-
-
-
-$$
 J(\boldsymbol{\vartheta}) = n_e \log(\max[\frac{1}{n_e}\sum_{t\in\mathcal{I}}\varepsilon_t^2(\boldsymbol{\vartheta}),10^{-12}]).
 $$
 
