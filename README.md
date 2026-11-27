@@ -331,24 +331,11 @@ python -m pip install numpy scipy pandas statsmodels scikit-learn
 python -m pip install tbats
 ```
 
-The examples assume the script retains its original name, `ARFIMA_e.py`; substitute its actual filename if different.
-
-Run the configured default benchmark:
-
-```bash
-python ARFIMA_e.py
-```
-
-Inspect command-line options:
-
-```bash
-python ARFIMA_e.py --help
-```
 
 ### 8.1 Real-data experiment
 
 ```bash
-python ARFIMA_e.py \
+python ARFIMA_extended_reviewer_benchmark_cli.py \
   --mode npy \
   --npy-path sp_2016_2d_arfima_vol.npy \
   --channels 0,1,2 --array-layout CT \
@@ -361,7 +348,7 @@ python ARFIMA_e.py \
 ### 8.2 Synthetic experiment
 
 ```bash
-python ARFIMA_e.py \
+python ARFIMA_extended_reviewer_benchmark_cli.py \
   --mode synthetic --synthetic-n 2000 --synthetic-burn 500 \
   --d-true 0.4 --seed 42 \
   --output-dir results_synthetic
@@ -372,11 +359,11 @@ python ARFIMA_e.py \
 Use a chronological validation partition for configuration selection, then assess the selected configuration on a separate test partition. Verify the origin boundary condition in Section 11 for the actual series length. The example uses an 80/10/10 split, rather than the default 95/5 train/test split.
 
 ```bash
-python ARFIMA_e.py --train-frac 0.8 --val-frac 0.1 \
+python ARFIMA_extended_reviewer_benchmark_cli.py --train-frac 0.8 --val-frac 0.1 \
   --eval-split validation --horizons 20,30,40,50 --rolling-step 11 \
   --output-dir results_validation
 
-python ARFIMA_e.py --train-frac 0.8 --val-frac 0.1 \
+python ARFIMA_extended_reviewer_benchmark_cli.py --train-frac 0.8 --val-frac 0.1 \
   --eval-split test --horizons 20,30,40,50 --rolling-step 11 \
   --output-dir results_test
 ```
@@ -384,7 +371,7 @@ python ARFIMA_e.py --train-frac 0.8 --val-frac 0.1 \
 ### 8.4 Seasonal comparison (example: hourly data with daily seasonality)
 
 ```bash
-python ARFIMA_e.py --enable-sarima --sarima-period 24 \
+python ARFIMA_extended_reviewer_benchmark_cli.py --enable-sarima --sarima-period 24 \
   --sarima-maxiter 100 --enable-tbats --seasonal-periods 24 \
   --output-dir results_seasonal
 ```
@@ -394,7 +381,7 @@ Use only seasonal periods supported by the dataset's sampling frequency. Without
 ### 8.5 Selected methods and sensitivity analysis
 
 ```bash
-python ARFIMA_e.py \
+python ARFIMA_extended_reviewer_benchmark_cli.py \
   --methods 'Naive,ARMA(AIC grid),ARFIMA fixed-d,ARFIMA estimated-d(DFA)' \
   --m-frac 250 --kernel-m 200 --fit-window 500 \
   --arma-p-max 2 --arma-q-max 2 \
@@ -467,18 +454,6 @@ The seed controls synthetic Gaussian innovations and randomized ML estimators. F
 Email: aliforootani@ieee.org · forootani@gea.mpg.de
 
 2026
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
