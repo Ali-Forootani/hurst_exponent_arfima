@@ -425,19 +425,8 @@ Origin-level runtime measures the combined fitting and maximum-horizon predictio
 
 The seed controls synthetic Gaussian innovations and randomized ML estimators. For reproducible reporting, retain the output configuration and original data, record the script revision, Python and library versions, and hardware, and use separate output directories for independent runs. The same directory may overwrite previous output files. The code does not guarantee bitwise reproducibility across environments.
 
-## 11. Limitations and implementation notes
 
-- Fractional differencing uses finite truncation; its approximation quality depends on window length, memory parameter, and truncation lag.
-- DFA may be sensitive to short windows, trends, regime changes, and seasonal structure. Its use does not establish genuine fractional integration.
-- The joint ARFIMA estimator is approximate conditional likelihood, not exact likelihood; finite-objective solutions may be retained even without optimizer convergence.
-- ARFIMA two-stage and joint-CSS models currently use order (1, 1); higher ARMA search bounds affect only the standalone ARMA baseline.
-- All methods forecast channels independently and use recursive multi-step prediction, where applicable. There is no joint spatial model, prediction interval estimation, or formal significance test in the script.
-- Accuracy estimates based on different successful-origin subsets require careful interpretation. Cross-channel standard deviations are descriptive rather than confidence intervals.
-- Seasonal forecasts depend on justified periods, adequate history, and sufficient fitting iterations.
-- **Origin-boundary caveat:** the supplied code constructs origins with `range(start, stop-hmax+1, ROLLING_STEP)`. If the stride reaches `stop-hmax`, that origin would require a target at index `stop` (outside the chosen partition). It may cause a shape mismatch at the end of the series or validation leakage into test. The intended exclusive upper bound is `stop-hmax` (in both origin-list constructions). Until corrected, check origin indices for each run so that `t + hmax < stop`.
-- **Method-selection caveat:** the current comma-separated `--methods` parser cannot select exact names containing embedded commas, including `ARFIMA joint-CSS(1,d,1)` and TBATS with multiple periods. Use `--methods all` to include these methods, or revise the CLI parser before selecting them individually.
-
-## 12. Research use cases
+## 11. Research use cases
 
 - Fractional long-memory forecasting and Hurst-based model validation.
 - Financial price, return, and absolute log-return analysis.
@@ -447,7 +436,7 @@ The seed controls synthetic Gaussian innovations and randomized ML estimators. F
 - Sensitivity studies of fractional truncation, rolling-window length, ARMA selection bounds, and fitting budgets.
 - Comparative evaluation of fixed, DFA-estimated, and jointly estimated fractional memory.
 
-## 13. Author
+## 12. Author
 
 **Ali Forootani**
 
