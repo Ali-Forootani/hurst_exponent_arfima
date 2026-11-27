@@ -105,8 +105,11 @@ J(\boldsymbol\vartheta)
 \right),
 $$
 
+
+
+
 $$
-J(\boldsymbol{\vartheta}) = n_e \log\left(\max\left\{\frac{1}{n_e}\sum_{t\in\mathcal{I}}\varepsilon_t^2(\boldsymbol{\vartheta}),10^{-12}\right\}\right).
+J(\boldsymbol{\vartheta}) = n_e \log(\max[\frac{1}{n_e}\sum_{t\in\mathcal{I}}\varepsilon_t^2(\boldsymbol{\vartheta}),10^{-12}]).
 $$
 
 
