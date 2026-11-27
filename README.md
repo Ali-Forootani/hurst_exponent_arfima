@@ -105,6 +105,11 @@ J(\boldsymbol\vartheta)
 \right),
 $$
 
+$$
+J(\boldsymbol{\vartheta}) = n_e \log\left(\max\left\{\frac{1}{n_e}\sum_{t\in\mathcal{I}}\varepsilon_t^2(\boldsymbol{\vartheta}),10^{-12}\right\}\right).
+$$
+
+
 where $\mathcal I$ is the retained innovation index set and $n_e=|\mathcal I|$. At the supported order (1, 1), the first 20 innovations are discarded.
 
 The bounded L-BFGS-B optimizer uses two initializations: DFA-based $d$ (restricted to $[-0.4,0.4]$) and $d=0$, with the remaining initial parameters set to zero. The candidate with the lowest finite objective is retained. Parameter bounds are
